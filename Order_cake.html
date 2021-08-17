@@ -1,0 +1,539 @@
+<!-- this is the layout of the first page for crete a cake -->
+<!-- this is the problem of aligning the iteams on the right spots -->
+<!-- sote info to the database and send sms or email if asked for -->
+<!-- sote value in sql database -->
+<!-- problem the buttons are not shown -->
+<!-- if wish to center the alignment use style = text-align:center in near future -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="description" content="order cake" charset="UTF-8">
+    <title>Create Cake</title>
+  </head>
+
+  <style>
+
+      /* Full-width input fields */
+      input {
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      }
+
+      label{
+      padding:5px;
+      font-size: 14px;
+      margin: 10px;
+      }
+
+      /* Set a style for all buttons */
+      button {
+      background-color: clear;
+      color: black;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      border-radius: 25px;
+      }
+
+      button:hover {
+      background-color: rgb(0, 0, 0, 0.4);
+      }
+
+      /* this is for the box on the top of page */
+      .boxbar_top{
+      height:20%;
+      width: 100%;
+      position: static; /*assign on top when stroll */
+      right:0;
+      overflow:hidden;
+      background-color: red;
+      }
+
+      /*accessing the button layout */
+      .boxbar_top a {
+      text-align: left;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+      }
+
+      /* bottom layout of screen */
+      .boxbar_bttom{
+      height: 20%;
+      width: 100%;
+      position: static; /* assign on top when stroll */
+      right: 0;
+      overflow: hidden;
+      background-color: red;
+      }
+
+      /*accessing the bottom layput */
+      .box_bar_bttom a{
+      float: left;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+      }
+
+      /* tabs layout */
+      .tabs{
+      background-color: inherit;
+      float: center;
+      border: 15px solid red;
+      padding: 14px 16px;
+      font-size: 17px;
+      border-radius: 25px;
+      padding: 20px;
+      width:200px;
+      height: 100%;
+      }
+
+      /*style of the tabs inside */
+      .tabs-button{
+      margin: 0;
+      position: absolute;
+      color: black;
+      padding: 22px 16px;
+      table-layout: fixed;
+      border-collapse: collapse;
+      text-align: center;
+      cursor: pointer;
+      font-size: 20px;
+      }
+
+
+      .box{
+      margin: auto;
+      width: 60%;
+      padding: 10px;
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      align-items: center;
+      color: black;
+      }
+
+      /* show the text when hover through tab */
+      .hiddenText{
+      display: none;
+      }
+
+      .hoverDiv:hover + .hiddenText{
+      display: block;
+      color: green;
+      font-size: 22px;
+      font-weight: bold;
+      }
+
+
+      /* Center the image and position the close button */
+      .imgcontainer {
+      text-align: center;
+      margin: 24px 0 12px 0;
+      position: relative;
+      }
+
+      /* the center of first-last-#...etc */
+      .container {
+      padding: 16px;
+      }
+
+      /* The Modal (background) */
+      .modal {
+
+      padding-top: 60px;
+      justify-content: center;
+      align-content: center;
+      &--hidden{
+      display:none;
+      }
+      &__close-bar{
+      display:flex;
+      justify-content: flex-end;
+      margin-right: -2rem;
+      margin-top:-1 rem;
+      cursor: pointer;
+      }
+      &__contents{
+      background-color:green;
+      padding:2rem 4rem;
+      input[type=name]{
+        width:100%;
+        padding: .5rem;
+      }
+
+      button{
+        width: 100%;
+        padding: .5rem;
+        background-color: yellow;
+        transition: all .3s ease;
+        cursor: pointer;
+        &:hover{
+          background-color: blue;
+        }
+      }
+      }
+      }
+
+      /* model layput when clicked */
+      .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+      border: 1px solid red;
+      width: 80%; /* Could be more or less, depending on screen size */
+      }
+
+      /* The Close Button (x) */
+      .close {
+      position: absolute;
+      right: 25px;
+      top: 0;
+      color: #000;
+      font-size: 35px;
+      font-weight: bold;
+      }
+
+      /*hover on layout */
+      .close:hover,
+      .close:focus {
+      color: red;
+      cursor: pointer;
+      }
+
+      /* next button layout */
+      a {
+      text-decoration: none;
+      display: inline-block;
+      padding: 8px 16px;
+      }
+
+      a:hover {
+      background-color:red;
+      color: white;
+      }
+
+      .previous {
+      background-color: gray;
+      color: black;
+      }
+
+      .next {
+      background-color: gray;
+      color: black;
+      }
+
+      .round {
+      border-radius: 50%;
+      }
+
+
+
+      /*set the cake size */
+      .set_cake{
+      color: black;
+      align-content: left;
+      text-align: left;
+      }
+
+      /* comment section */
+      textarea{
+      padding: 12px;
+      height: absolute;
+      width: fixed;
+      font: sans-serif;
+      }
+
+
+      /* setting the cake in order for layout */
+      #flavor_set{
+      float:left;
+      width: auto;
+      height:280px;
+      text-align: start;
+      }
+
+
+      #sized_set{
+      float:left;
+      width:50%;
+      height:280px;
+      text-align: center;
+      }
+      /* width is align in auto look up */
+      #fill_set{
+      float:right;
+      width:25%;
+      height:280px;
+      }
+
+      /*input[type="radio"] {
+      margin-top: -1px;
+      vertical-align: middle;
+
+      }*/
+
+      input.radio{
+      padding:0 10px 0 0;
+      position:relative;
+      top:-2px;
+      }
+
+  </style>
+
+
+
+  <script>
+
+
+        /*function openForm() {
+                document.getElementById("btn").style.display = "block";
+              }
+              function closeForm() {
+                document.getElementById("btn").style.display = "none";
+              }
+        */
+
+        //writing for the cake on top avoid writing on cake
+        $(".test1").click(function() {
+            $("#text1").attr("disabled", true);
+            if ($("input[name=Message_on_cake]:checked").val() == "yes"){
+                $("#text1").attr("disabled", false);
+            }
+        });
+
+
+        /*const toggleModal = () =>{
+        	document.querySelector('.modal')
+        		.classList.toggle('modal--hidden');
+        };
+
+        document.querySelector('#show-modal')
+        	.addEventListener('click', toggleModal);
+
+        document.querySelector('#learn-more')
+        	.addEventListener('submit', (event) => {
+        	event.preventDefault();
+        	toggleModal();
+        	});
+        	*/
+
+
+
+
+  </script>
+
+
+  <body>
+    <div class="boxbar_top">
+      <form style="position: active;">
+        <select name="dropdown" style="width: 150px; background-color: #e6e6e6;" placeholder="choose language">
+          <option value="" disabled selected>Choose Language</option>
+          <option value="English">English</option>
+          <option value="Spansih">Spansih</option>
+        </select>
+      </form>
+      <h2 class="boxbar_top" style="color: white; align-items: right;">
+        Order your cake online
+      </h2>
+
+    </div>
+
+    <div class="box">
+      <div class="tabs">
+        <button id="show-modal"> ADD ORDER </button>
+
+        <div style="tabs-button">
+          <button onclick="document.getElementById('info').style.display='block'"> CHECK ORDER </button>
+        </div>
+
+        <div style="tabs-button">
+          <button onclick=" ">DELETE ORDER </button>
+        </div>
+      </div>
+    </div>
+
+<!-- order either cupcake or cake when add order is clicked -->
+<div class="box">
+      <div class="tabs" style="tabs-button
+">
+        <button id="cake_order"> Cake </button>
+				     <button id="cup_order"> Cupcake </button>
+
+			</div>
+</div>
+
+
+    <!-- odering the cake when cliked -->
+    <div class="modal modal--hidden">
+      <div class="modal_contents">
+        <h2>Info</h2>
+        <p>
+          Please Enter information for ordering the cake
+        </p>
+        <!-- https://www.youtube.com/watch?v=KX0NR5HtQ1Q -->
+        <!-- name/tel/email info etc...-->
+        <form id="learn-more" name="myform" action="" method="post" style="background: white; color: black; button: width: 50%">
+          <label for="fname">First Name:</label><br>
+          <input type="text" id="fname" name="fname" placeholder="First Name"><br>
+          <label for="lname">Last Name:</label><br>
+          <input type="text" id="lname" name="lname" placeholder="Last Name"><br>
+
+          <label for="phone">Phone Number:</label><br>
+          <input type="tel" id="phone" name="phone" placeholder="XXX-XXX-XXXX"><br>
+
+          <label for="email">Email:</label><br>
+          <input type="email" id="email" placeholder="username@email.com"><br>
+          <label for="Order_By">Order Taken By:</label><br>
+          <input type="text" id="Order_by" placeholder="Associate"><br>
+          <label for="Pick_Date">Date To Pick Up:</label>
+          <input type="text" id="Pick_Date" placeholder="mm/dd/yyyy"><br>
+          <!-- cahnfe the color of the back ground tp css -->
+          <label for="appt">Time:</label>
+          <input type="time" id="appt" name="appt" placeholder="00:00" style="background-color: #e6e6e6;">
+
+          <!--	<input type="radio" id="AM" name="Time_AM" value="AM">
+          <label for="AM">AM</label>
+
+
+					<input type="radio" id="PM" name="Time_PM" value="PM">
+          <label for="PM">PM</label><br> -->
+
+          <!-- special occation for the order -->
+          <h2> Occasion Type</h2>
+          <select name="dropdown" style="max-width: 50%" placeholder="  ">
+            <option value="" disabled selected></option>
+            <option value="Birthday">Birthday</option>
+            <option value="Anversey">Anversey</option>
+            <option value="Graduation">Graduation</option>
+            <option value="Shower">Shower</option>
+            <option value="Christin">Christin</option>
+            <option value="1st_Communion">1st Communion</option>
+            <option value="Bar_Mitzvah">Bar/Bat Mitzvah</option>
+            <option value="other">Other</option>
+          </select><br>
+
+          <p style="padding: 12px;">
+            Message On Cake:
+          </p>
+
+
+          <!-- when clicked no disable the text box -->
+          <input type="radio" name="Message_on_cake" class="test1" value="no" />No<br>
+
+          <input type="text" id="text1" /><br>
+
+
+          <a href="#" class="next round" id="next_button">&#8249;</a>
+          <a href="#" class="next round">&#8250;</a>
+        </form>
+      </div>
+    </div>
+
+    <!-- set out of the div to order of the name -->
+    <h2> Set Cake </h2>
+
+    <!-- set the size of the cake and choices -->
+    <center>
+      <div id="order_set_cake">
+
+        <form id="set_cake">
+          <div class="flavor_picked" id="flavor_set">
+            <p><strong>Flavors</strong></p>
+            <input type="radio" id="flavor1" name="Type_of_flavor" value="Vanilla">
+            <label for="flavor1">Vanilla</label><br>
+
+            <input type="radio" id="flavor2" name="Type_of_flavor" value=" Strawberry">
+            <label for="flavor2">Strawberry</label><br>
+
+            <input type="radio" id="flavor3" name="Type_of_flavor" value=" Chocolate">
+            <label for="flavor3">Chocolate</label><br>
+          </div>
+        </form>
+
+        <!-- size of the sheet of cake -->
+        <form>
+          <center>
+            <div class="Sized_picked" style="postion: relative; display: inline-block;" id="sized_set">
+              <p><strong>Size</strong></p>
+
+              <input type="radio" id="size1" name="Size_of_cake" value=" 4x4">
+              <label for="size1 " style="align: left">4x4</label><br>
+
+
+              <input type="radio" id="size2" name="Size_of_cake" value=" 6x6">
+              <label for="size2">6x6</label><br>
+
+
+              <input type="radio" id="size3" name="Size_of_cake" value=" 8x8">
+              <label for="size3">8x8</label><br>
+
+
+              <input type="radio" id="size4" name="Size_of_cake" value=" 12x12">
+              <label for="size4">12x12</label><br>
+            </div>
+          </center>
+
+        </form>
+
+        <div class="Fill_cake" style="postion: relative; text-align:center; display: inline-block" id="fill_set">
+
+          <p><strong>Filling</strong></p>
+          <form>
+
+            <input type="radio" id="fill1" name="Filling_cake" value=" Cherry">
+            <label for="fill1"> Cherry</label><br>
+
+            <input type="radio" id="fill2" name="Filling_cake" value=" Rasberry">
+            <label for="fill2"> Rasberry</label><br>
+
+            <input type="radio" id="fill3" name="Filling_cake" value=" Strawberry">
+            <label for="fill3">Strawberry</label><br>
+
+            <input type="radio" id="fill4" name="Filling_cake" value=" Lemon">
+            <label for="fill4">Lemon</label><br>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </center>
+
+
+
+    <a href="#" class="next round">&#8249;</a>
+
+    <a href="#" class="next round">&#8250;</a>
+
+
+    <h2>
+      Add any comments or writing
+    </h2>
+
+    <textarea rows="4" cols="50" name="comment" form="usrform" placeholder="Add Comment Here...."></textarea>
+
+
+
+    <!-- final submission when finished -->
+    <input type="submit" value="Submit" style="width: 300px; text-align: center; justify-content: center;">
+
+    <div class="boxbar_top">
+      <a class="active"> </a>
+
+
+    </div>
+
+  </body>
+
+</html>
