@@ -253,41 +253,34 @@
       width: fixed;
       font: sans-serif;
       }
+	  
+	  
 
-
-      /* setting the cake in order for layout */
-      #flavor_set{
-      float:left;
-      width: auto;
-      height:280px;
-      text-align: start;
-      }
-
-
-      #sized_set{
-      float:left;
-      width:50%;
-      height:280px;
-      text-align: center;
-      }
-      /* width is align in auto look up */
-      #fill_set{
-      float:right;
-      width:25%;
-      height:280px;
-      }
-
-      /*input[type="radio"] {
-      margin-top: -1px;
-      vertical-align: middle;
-
-      }*/
-
-      input.radio{
-      padding:0 10px 0 0;
-      position:relative;
-      top:-2px;
-      }
+	/*set cake section */
+	.container {
+		    width:600px;
+		    height:190px;
+		    padding-top:20px;
+		    padding-left:15px;
+		    padding-right:15px;
+		}
+		#flavor_cake {
+		    float:left;
+		    width:180px;
+		    height:160px;
+		}
+		#size_cake {
+		    float:left;
+		    width:180px;
+		    height:160px;
+		    margin-left:20px;
+		}
+		#filling_cake {
+		    float:right;
+		    width:180px;
+		    height:160px;
+		}
+	
 
   </style>
 
@@ -443,9 +436,9 @@
     <!-- set out of the div to order of the name -->
     <h2> Set Cake </h2>
 
-    <!-- set the size of the cake and choices -->
-    <center>
-      <div id="order_set_cake">
+   
+    <div class="container">
+      <div id="flavor_cake">
 
         <form id="set_cake">
           <div class="flavor_picked" id="flavor_set">
@@ -458,38 +451,48 @@
 
             <input type="radio" id="flavor3" name="Type_of_flavor" value=" Chocolate">
             <label for="flavor3">Chocolate</label><br>
+
+
           </div>
         </form>
 
+      </div>
+
+      <div id="size_cake">
+
         <!-- size of the sheet of cake -->
         <form>
-          <center>
-            <div class="Sized_picked" style="postion: relative; display: inline-block;" id="sized_set">
-              <p><strong>Size</strong></p>
+          <div class="Sized_picked" style="postion: relative; display: inline-block;" id="sized_set">
+            <p><strong>Size</strong></p>
 
-              <input type="radio" id="size1" name="Size_of_cake" value=" 4x4">
-              <label for="size1 " style="align: left">4x4</label><br>
-
-
-              <input type="radio" id="size2" name="Size_of_cake" value=" 6x6">
-              <label for="size2">6x6</label><br>
+            <input type="radio" id="size1" name="Size_of_cake" value=" 4x4">
+            <label for="size1 " style="align: left">4x4</label><br>
 
 
-              <input type="radio" id="size3" name="Size_of_cake" value=" 8x8">
-              <label for="size3">8x8</label><br>
+            <input type="radio" id="size2" name="Size_of_cake" value=" 6x6">
+            <label for="size2">6x6</label><br>
 
 
-              <input type="radio" id="size4" name="Size_of_cake" value=" 12x12">
-              <label for="size4">12x12</label><br>
-            </div>
-          </center>
+            <input type="radio" id="size3" name="Size_of_cake" value=" 8x8">
+            <label for="size3">8x8</label><br>
+
+
+            <input type="radio" id="size4" name="Size_of_cake" value=" 12x12">
+            <label for="size4">12x12</label><br>
+          </div>
 
         </form>
 
-        <div class="Fill_cake" style="postion: relative; text-align:center; display: inline-block" id="fill_set">
 
-          <p><strong>Filling</strong></p>
-          <form>
+      </div>
+
+      <div id="filling_cake">
+
+
+        <form>
+          <div class="Fill_cake" style="postion: relative;" id="fill_set">
+
+            <p><strong>Filling</strong></p>
 
             <input type="radio" id="fill1" name="Filling_cake" value=" Cherry">
             <label for="fill1"> Cherry</label><br>
@@ -503,13 +506,11 @@
             <input type="radio" id="fill4" name="Filling_cake" value=" Lemon">
             <label for="fill4">Lemon</label><br>
 
-          </form>
-
-        </div>
+          </div>
+        </form>
 
       </div>
-
-    </center>
+    </div>
 
 
 
